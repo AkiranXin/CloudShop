@@ -1,4 +1,4 @@
-// pages/product_fenlei/product_fenlei.js
+
 
 const db = wx.cloud.database()
 Page({

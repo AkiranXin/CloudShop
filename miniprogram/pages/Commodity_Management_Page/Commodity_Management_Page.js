@@ -1,4 +1,4 @@
-// pages/store_operation_gl/store_operation_gl.js
+
 const db = wx.cloud.database()
 Page({
 
@@ -14,68 +14,36 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    db.collection('product').get({
-      success:function(res){
-        console.log('获取商品成功',res)
+    wx.cloud.callFunction({
+      name:"get_product",
+      data:{
+        
+      },success:function(res){
+        console.log('订单详情获取成功',res)
         that.setData({
-          product:res.data
+          product:res.result.data
         })
+      },fail:function(res){
+        console.log('订单详情获取失败',res)
       }
     })
   },
+
+
+
   onShow: function (options) {
     let that = this
-    db.collection('product').get({
-      success:function(res){
-        console.log('获取商品成功',res)
+    wx.cloud.callFunction({
+      name:"get_product",
+      data:{
+      },success:function(res){
+        console.log('订单详情获取成功',res)
         that.setData({
-          product:res.data
+          product:res.result.data
         })
+      },fail:function(res){
+        console.log('订单详情获取失败',res)
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

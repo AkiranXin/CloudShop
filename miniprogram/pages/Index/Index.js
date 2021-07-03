@@ -48,8 +48,25 @@ Page({
       },
     })
   },
-
+  getOpenId() {
+   wx.cloud.callFunction({
+      name: 'quickstartFunctions',
+      config: {
+        env: this.data.envId
+      },
+      data: {
+        type: 'getOpenId'
+      }
+    }).then((resp) => {
+      console.log('openId为——'+resp.result.openid) 
+   }).catch((e) => {
+      this.setData({
+        showUploadTip: true
+      })
+    })
+  },
   onLoad: function() {
+    this.getOpenId()
     let that = this
     db.collection('swiper').get({
       success:function(res){

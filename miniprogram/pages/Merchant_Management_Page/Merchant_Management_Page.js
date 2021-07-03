@@ -1,4 +1,4 @@
-// pages/store_operation/store_operation.js
+
 Page({
 
   /**

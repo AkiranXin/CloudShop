@@ -1,4 +1,4 @@
-// pages/my_record/my_record.js
+
 const db = wx.cloud.database()
 Page({
 

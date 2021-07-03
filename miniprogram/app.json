@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/Index/Index",
-    "pages/Commodity_Management_Page/Commodity_Management_Page",
     "pages/Merchant_Management_Page/Merchant_Management_Page",
+    "pages/Commodity_Management_Page/Commodity_Management_Page",
     "pages/Commodity_Details_Page/Commodity_Details_Page",
     "pages/My_order/My_order",
     "pages/Order_Details_Page/Order_Details_Page",

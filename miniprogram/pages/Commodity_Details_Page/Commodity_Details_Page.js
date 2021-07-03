@@ -1,4 +1,4 @@
-// pages/product_detail/product_detail.js
+
 const db = wx.cloud.database()
 
 Page({

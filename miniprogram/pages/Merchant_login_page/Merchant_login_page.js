@@ -1,4 +1,4 @@
-// pages/store_login/store_login.js
+
 const db = wx.cloud.database()
 Page({
 

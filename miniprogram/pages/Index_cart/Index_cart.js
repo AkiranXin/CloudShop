@@ -1,4 +1,4 @@
-// pages/shopping_cart/shopping_cart.js
+
 const db = wx.cloud.database()
 const _ = db.command
 Page({

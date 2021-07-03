@@ -1,4 +1,4 @@
-// pages/store_operation_up/store_operation_up.js
+
 const db = wx.cloud.database()
 
 Page({

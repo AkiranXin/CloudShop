@@ -1,4 +1,3 @@
-// pages/fenlei/fenlei.js
 const db = wx.cloud.database()
 Page({
 

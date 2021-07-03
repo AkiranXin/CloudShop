@@ -1,4 +1,4 @@
-// pages/pay/pay.js
+
 const util = require('../../utils/util.js')
 const  db = wx.cloud.database()
 Page({

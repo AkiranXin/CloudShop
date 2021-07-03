@@ -1,4 +1,4 @@
-// pages/store_operation_up/store_operation_up.js
+
 const db = wx.cloud.database()
 
 Page({
@@ -141,7 +141,7 @@ delete_xq: function (e) {
             title: '提交成功',
           })
           wx.redirectTo({
-            url: '../store_operation_up/store_operation_up',
+            url: '../Commodity_Upload_Page/Commodity_Upload_Page',
           })
         }
       })
@@ -203,9 +203,10 @@ delete_xq: function (e) {
   onPullDownRefresh: function () {
     let that = this
     wx.redirectTo({
-      url: '../store_operation_up/store_operation_up',
+      url: '../Commodity_Upload_Page/Commodity_Upload_Page',
     })
   },
+
 
   /**
    * 页面上拉触底事件的处理函数
