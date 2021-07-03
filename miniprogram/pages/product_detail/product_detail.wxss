@@ -77,8 +77,8 @@
   align-self: center;
   align-items: center;
   justify-content: center;
-  background-color: #ff8601;
+  background-color: #CB407F;
   color: #fff;
-  font-size: 18px;
+  font-size: 37rpx;
 }
 

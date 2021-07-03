@@ -7,18 +7,28 @@ Page({
     product:[],
     search:[],
     num:20,
-    ss:false
+    ss:false,
+    inputVal:""
   },
   // 分类跳转事件
   fenlei:function(e){
     console.log(e)
   },
-  // 搜索事件
-  search:function(e){
+
+  search1:function(e){
     let that = this
-    db.collection('product').where({
-      name:e.detail.value
-    }).get({
+    db.collection('product')
+    .where({
+      // name:e.detail.value
+      name:{								
+        //columnName表示欲模糊查询数据所在列的名
+        $regex:'.*' + e.detail.value + '.*',		
+        //queryContent表示欲查询的内容，‘.*’等同于SQL中的‘%’
+        $options: 'i'							
+        //$options:'1' 代表这个like的条件不区分大小写,详见开发文档
+      }
+    })
+    .get({
       success:function(res){
         that.setData({
           search:res.data
@@ -35,6 +45,30 @@ Page({
         console.log('搜索失败',res)
       },
     })
+  },
+  search2:function(e){
+    console.log(this.data.inputVal)
+    // let that = this
+    // console.log(e.currentTarget.dataset.input)
+    // db.collection('product').where({
+    //   name:e.detail.value
+    // }).get({
+    //   success:function(res){
+    //     that.setData({
+    //       search:res.data
+    //     })
+    //     console.log('搜索成功！',that.data.search)
+    //     if(that.data.search == ""){
+    //       wx.showToast({
+    //         title: '未找到商品',
+    //         icon:"none"
+    //       })
+    //     }
+    //   },
+    //   fail:function(res){
+    //     console.log('搜索失败',res)
+    //   },
+    // })
   },
   onLoad: function() {
     let that = this

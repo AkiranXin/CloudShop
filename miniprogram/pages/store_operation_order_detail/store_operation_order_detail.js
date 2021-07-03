@@ -12,6 +12,7 @@ Page({
   // 拨打电话
   phone:function(){
     let that= this
+    console.log(that.data.order.phone_number)
     wx.makePhoneCall({
       phoneNumber: that.data.order.phone_number
     })

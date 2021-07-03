@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/store_operation/store_operation",
     "pages/index/index",
+    "pages/store_operation/store_operation",
     "pages/my_record/my_record",
     "pages/store_operation_order_detail/store_operation_order_detail",
     "pages/store_operation_up/store_operation_up",

@@ -11,10 +11,10 @@
 <!-- 产品信息 -->
 <view class="product">
   <view class="product_1">
-    <view>{{product_name}}:</view>
-    <view style="color:red">{{product_price}}元</view>
+    <view style="font-size:45rpx;margin:2px 8px 8px 0;wxcs_style_margin:6rpx 20rpx 20rpx 0;">{{product_name}}:</view>
+    <view style="color:red;margin-top:4rpx;font-size:50rpx;">{{product_price}}元</view>
   </view>
-  <view style="color:rgb(141, 141, 141)">{{product_detail}}</view>
+  <view style="color:rgb(141, 141, 141);font-size:36rpx;">{{product_detail}}</view>
 </view>
 <view class="line"></view>
 
@@ -22,7 +22,7 @@
 <!-- 商品详情 -->
 
 <view class="product_xq">
-  <view style="color:#ff6801" bindtap="xq">商品详情</view>
+  <view style="color:#BC4A7E;font-size:43rpx;" bindtap="xq">商品详情</view>
 </view>
 <image src="{{product_xq_src}}" mode="widthFix" style="width:750rpx"></image>
 <view style="align-self: center;height:150rpx">你已经看完了!快下单吧</view>
@@ -31,7 +31,7 @@
 <!-- 按钮 -->
 <view class="pay">
   <view class="pay_1" bindtap="into_shopping_cart">
-    <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/商城小程序/images/icons/gouwuche1.png" style="width:80rpx;height:80rpx"></image>
+    <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/cart2.png" style="width:70rpx;height:70rpx"></image>
   </view>
   <view class="pay_2" bindtap="buy">立即购买</view>
 </view>

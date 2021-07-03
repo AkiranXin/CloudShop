@@ -1,7 +1,7 @@
 <!-- 搜索框 -->
 <view class="search" >
-  <input placeholder="请输入要搜索的商品" bindconfirm="search" confirm-type="done"></input>
-  <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/搜索.png" style="width:50rpx;height:50rpx" ></image>
+  <input placeholder="请输入要搜索的商品" bindconfirm="search1" confirm-type="done" ></input>
+  <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/搜索.png" style="width:50rpx;height:50rpx"></image>
 </view>
 
 
@@ -9,10 +9,10 @@
 <view class="list" wx:for="{{search}}" wx:key="_id">
   <navigator class="list_1" url="../product_detail/product_detail?id={{item._id}}">
     <image src="{{item.src[0]}}" style="width:100rpx;height:100rpx;margin-left: 10rpx;"></image>
-    <view>商品：{{item.name}}</view>
-    <view style="margin-right: 50rpx;">价格：{{item.price}}</view>
+    <view style="font-size:36rpx;">商品：{{item.name}}</view>
+    <view style="margin-right:21px;color: red;">¥ {{item.price}}</view>
   </navigator>
-  <view class="line"></view>
+  <view class="line_s"></view>
 </view>
 
 
