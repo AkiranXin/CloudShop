@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/store_operation/store_operation",
+    "pages/index/index",
+    "pages/my_record/my_record",
+    "pages/store_operation_order_detail/store_operation_order_detail",
+    "pages/store_operation_up/store_operation_up",
+    "pages/store_login/store_login",
+    "pages/store_operation_gl/store_operation_gl",
+    "pages/store_operation_update/store_operation_update",
+    "pages/product_fenlei/product_fenlei",
+    "pages/product_detail/product_detail",
+    "pages/shopping_cart/shopping_cart",
+    "pages/my/my",
+    "pages/pay/pay",
+    "pages/fenlei/fenlei",
+    "pages/my_record_detail/my_record_detail",
+    "pages/store_operation_order/store_operation_order"
+
+  ],
+  "window": {
+    "backgroundColor": "#ff6801",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#DD307F",
+    "navigationBarTitleText": "西柚严选",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#B7B7B7",
+    "selectedColor": "#DD307F",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"./pages/img/shop1.png",
+        "selectedIconPath":"./pages/img/shop2.png"
+      },
+      {
+        "pagePath": "pages/product_fenlei/product_fenlei",
+        "text": "分类",
+        "iconPath":"./pages/img/category1.png",
+        "selectedIconPath":"./pages/img/category2.png"
+      },
+      {
+        "pagePath": "pages/shopping_cart/shopping_cart",
+        "text": "购物车",
+        "iconPath":"./pages/img/cart1.png",
+        "selectedIconPath":"./pages/img/cart2.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我",
+        "iconPath":"./pages/img/me1.png",
+        "selectedIconPath":"./pages/img/me2.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

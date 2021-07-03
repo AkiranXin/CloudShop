@@ -1,0 +1,43 @@
+
+<!-- 收货信息 -->
+<view class="order_deatail">
+  <view class="order_deatail_1">
+    <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/定位.png" style="width:34px;height:34px;margin-left:66rpx;" ></image>
+  </view>
+  <view class="order_deatail_2">
+      <view>
+        <text style="font-size:40rpx;font-weight: 500;">{{order.name}}</text> 
+        <text style="font-size:32rpx;color: #A2A3A4;">{{order.phone_number}}</text> 
+      </view> 
+      <view style="font-size:35rpx;color: #A2A3A4;">{{order.address}}</view>
+  </view>
+</view>
+
+<!-- 订单商品 -->
+<block wx:for="{{order.product}}" wx:key="_id">
+  <navigator url="../product_detail/product_detail?id={{item.product_id}}" class="order">
+    <view class="order_2">
+      <image src="{{item.product_src}}" style="width:185rpx;height:185rpx;"></image>
+      <view class="order_3">
+        <view style="margin-top:10rpx;">{{item.product_name}}
+          <view style="font-size:14px;padding:10rpx;color:#a9a5a5;">x{{item.product_num}}</view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</block>
+
+
+<!-- 订单信息 -->
+<view class="order_message">
+  <view style="margin-top:20rpx;margin-left:250rpx;font-weight:500;">订单信息</view>
+  <view>△订单时间：<text style="color: #fb6257;">{{order.time}}</text></view>
+  <view>△订单金额：<text style="color: #fb6257;">¥{{order.money}}</text></view>
+  <view>备注：{{order.beizhu}}</view>
+</view>
+
+
+
+<button bindtap="phone" type="primary" plain="true" style="margin:12px auto;wxcs_style_margin:30rpx auto;">拨打电话</button>
+
+<button bindtap="songda" type="primary" >订单已送达</button>

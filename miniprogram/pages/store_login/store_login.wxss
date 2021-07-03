@@ -1,0 +1,42 @@
+/* pages/store_login/store_login.wxss */
+.line{
+  width: 100%;
+  height: 3rpx;
+  background-color: #DD307F;
+  margin-top: 20rpx;
+}
+
+.tongyi{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
+.login_1{
+  display: flex;
+  flex-direction: row;
+  /* align-items: center; */
+  /* align-self: center; */
+  /* justify-content: center; */
+  text-align: left;
+  font-size: 36rpx;
+  margin-top: 30rpx;
+}
+.btn{
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    border: 2rpx solid #DD307F;
+    color: #DD307F;
+    border-radius: 20rpx;
+}

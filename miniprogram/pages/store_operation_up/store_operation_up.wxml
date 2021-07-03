@@ -1,0 +1,56 @@
+<form bindsubmit="submit">
+  <view class="up">
+<!-- 商品信息 -->
+    <view class="upload_msg1">
+      <view class="upload_1">
+        <view>商品名：</view>
+        <input placeholder="请输入商品名" name="name"></input>
+      </view>
+      <view class="line"></view>
+      <view class="upload_1">
+        <view>商品价格：</view>
+        <input placeholder="请输入商品价格" name="price"></input>
+      </view>
+      <view class="line"></view>
+      <view class="chooseCategory">
+        <radio-group name="fenlei">
+          <block wx:for="{{fenlei}}" wx:key="_id">
+            <radio value="{{item.name}}">{{item.name}}</radio>
+          </block>
+        </radio-group>
+      </view>
+    </view>
+<!-- 商品简介 -->
+    <view class="upload_msg2">
+      <view style="font-size:15px;margin:15rpx;font-weight:500;">商品简介：</view>
+      <textarea placeholder="请输入商品简介（小于200字）" maxlength="120" style="width: 90%;" name="detail"></textarea>
+    </view>
+<!-- 商品展示图片 -->
+    <scroll-view class="img" scroll-y="true">
+      <view style="font-size:15px;margin:15rpx;font-weight:500;padding:10rpx;">商品展示图：</view>
+      <block wx:for="{{img}}">
+        <image src="{{item}}" style="width:80rpx;height:80rpx"></image>
+        <button size="mini" type="warn" plain="true" bindtap="delete" data-id="{{index}}"
+          data-src="{{item}}" >X</button>
+      </block>
+      <view class="anniu">
+        <button size="mini" type="primary" bindtap="upload_img" style="background-color: #DD307F;">添加图片</button>
+      </view>
+    </scroll-view>
+<!-- 商品详情页 -->
+<scroll-view class="img" scroll-y="true">
+      <view style="font-size:15px;margin:15rpx;font-weight:500;">商品详情图：<text style="color: red;font-size:31rpx;">（⚠️：仅上传一张图片）</text></view>
+      <block wx:for="{{img_xq}}">
+        <image src="{{item}}" style="width:80rpx;height:80rpx;padding:10rpx;"></image>
+        <button size="mini" type="warn" plain="true" bindtap="delete_xq" data-id="{{index}}"
+          data-src="{{item}}" >X</button>
+      </block>
+      <view class="anniu">
+        <button size="mini" type="primary" bindtap="upload_img_xq" style="background-color: #DD307F;">添加图片</button>
+      </view>
+</scroll-view>
+  
+  </view>
+
+  <button form-type="submit" type="primary" style="background-color:#DD307F;margin-top:20rpx;">提交</button>
+</form>

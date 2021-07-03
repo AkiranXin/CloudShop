@@ -1,0 +1,61 @@
+/* pages/my/my.wxss */
+page{
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+.cc{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 15rpx;
+  overflow: hidden;
+  margin-left: 50rpx;
+}
+.aq{
+  display: flex;
+  flex-direction: row;
+  font-size: 42rpx;
+  /* font-weight: 400; */
+  width: 100%;
+  height: 60rpx;
+  background-color: #fff;
+  margin-top: 25rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 20rpx;
+}
+
+.aa{
+  display: flex;
+  flex-direction: row;
+  padding: 0 0 45rpx 0;
+  background-color: #DD307F;
+  height: 150rpx;
+  align-items: center;
+  color: #fff;
+}
+.ac{
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  margin-left: 50rpx;
+  margin-top: 10rpx;
+}
+.cv{
+  font-size: 15px;
+  margin-left: 50rpx;
+  margin-top: 10rpx;
+}
+.btn view{
+  position: fixed;
+  left: 210rpx;
+  bottom: 180rpx;
+  width: 300rpx;
+  height: 100rpx;
+  line-height: 90rpx;
+  text-align: center;
+  /* margin: 40rpx auto; */
+  border: 2rpx solid #DD307F;
+  color: #DD307F;
+  border-radius: 20rpx;
+}
