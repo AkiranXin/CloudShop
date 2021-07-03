@@ -1,0 +1,62 @@
+<!-- 搜索框 -->
+<view class="search" >
+  <input placeholder="请输入要搜索的商品" bindconfirm="search1" confirm-type="done" bindfocus="inputFocus" bindblur="inputBlur"></input>
+  <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/搜索.png" style="width:50rpx;height:50rpx"></image>
+</view>
+
+
+<!-- 搜索列表 -->
+<view class="searchOut" hidden="{{!flag}}">
+  <view class="list" wx:for="{{search}}" wx:key="_id">
+  <view>
+    <navigator class="list_1" url="../Commodity_Details_Page/Commodity_Details_Page?id={{item._id}}">
+      <image src="{{item.src[0]}}" style="width:100rpx;height:100rpx;margin-left: 10rpx;"></image>
+      <view style="font-size:36rpx;">商品：{{item.name}}</view>
+      <view style="margin-right:21px;color: red;">¥ {{item.price}}</view>
+    </navigator>
+    <view class="line_s"></view>
+  </view>
+</view>
+</view>
+
+
+
+<!-- 轮播图 -->
+<view class="banner" >
+  <swiper class="banner_1" autoplay="true" circular="true" interval="5000" indicator-dots="true">
+    <swiper-item  wx:for="{{banner}}" wx:key="_id">
+      <image src="{{item.src}}" style="width:100%;height:100%;"></image>
+    </swiper-item>
+  </swiper>
+</view>
+
+
+
+<!-- 分类模块 -->
+<view class="fenlei" >
+  <view class="fenlei_1" wx:for="{{fenlei}}" wx:key="_id">
+    <navigator url="../Commodity_category_page/Commodity_category_page?name={{item.name}}" class="fenlei_2">
+      <image src="{{item.src}}" style="width:80rpx;height:80rpx"></image>
+      <text>{{item.name}}</text>
+    </navigator>
+  </view>
+</view>
+
+
+
+<!-- 产品列表 -->
+<view class="product">
+<view class="line"></view>
+  <block wx:for="{{product}}" wx:key="_id">
+  <navigator class="product_1" url="../Commodity_Details_Page/Commodity_Details_Page?id={{item._id}}">
+    <image src="{{item.src[0]}}" class="img"></image>
+    <view class="product_2">
+      <text style="font-size:12px;">{{item.name}}：￥{{item.price}}</text>
+      <text style="font-size:12px;font-weight: 200;">销量：{{item.num}}</text>
+    </view>
+  </navigator>
+  </block>
+</view>
+
+
+
