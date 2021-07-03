@@ -1,0 +1,14 @@
+<view class="operation">
+  <view bindtap="operation" data-page="../商品上传页/商品上传页">
+    <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/上传.png" style="width:100rpx;height:100rpx"></image>
+    <view>上传商品</view>
+  </view>
+  <view bindtap="operation" data-page="../订单管理页/订单管理页">
+    <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/订单管理.png" style="width:100rpx;height:100rpx"></image>
+    <view>管理订单</view>
+  </view>
+  <view bindtap="operation" data-page="../商品管理页/商品管理页">
+    <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/商品管理.png" style="width:100rpx;height:100rpx"></image>
+    <view>管理商品</view>
+  </view>
+</view>

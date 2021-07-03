@@ -1,21 +1,21 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/store_operation/store_operation",
-    "pages/my_record/my_record",
-    "pages/store_operation_order_detail/store_operation_order_detail",
-    "pages/store_operation_up/store_operation_up",
-    "pages/store_login/store_login",
-    "pages/store_operation_gl/store_operation_gl",
-    "pages/store_operation_update/store_operation_update",
-    "pages/product_fenlei/product_fenlei",
-    "pages/product_detail/product_detail",
-    "pages/shopping_cart/shopping_cart",
-    "pages/my/my",
-    "pages/pay/pay",
-    "pages/fenlei/fenlei",
-    "pages/my_record_detail/my_record_detail",
-    "pages/store_operation_order/store_operation_order"
+    "pages/首页/首页",
+    "pages/商户管理页/商户管理页",
+    "pages/商品详情页/商品详情页",
+    "pages/我的订单/我的订单",
+    "pages/订单详情页/订单详情页",
+    "pages/商品上传页/商品上传页",
+    "pages/商家登录页/商家登录页",
+    "pages/商品管理页/商品管理页",
+    "pages/商品更新页/商品更新页",
+    "pages/首页_分类/首页_分类",
+    "pages/首页_购物车/首页_购物车",
+    "pages/首页_我/首页_我",
+    "pages/商品结算页/商品结算页",
+    "pages/商品分类页/商品分类页",
+    "pages/我的订单详情页/我的订单详情页",
+    "pages/订单管理页/订单管理页"
 
   ],
   "window": {
@@ -30,25 +30,25 @@
     "selectedColor": "#DD307F",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/首页/首页",
         "text": "首页",
         "iconPath":"./pages/img/shop1.png",
         "selectedIconPath":"./pages/img/shop2.png"
       },
       {
-        "pagePath": "pages/product_fenlei/product_fenlei",
+        "pagePath": "pages/首页_分类/首页_分类",
         "text": "分类",
         "iconPath":"./pages/img/category1.png",
         "selectedIconPath":"./pages/img/category2.png"
       },
       {
-        "pagePath": "pages/shopping_cart/shopping_cart",
+        "pagePath": "pages/首页_购物车/首页_购物车",
         "text": "购物车",
         "iconPath":"./pages/img/cart1.png",
         "selectedIconPath":"./pages/img/cart2.png"
       },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/首页_我/首页_我",
         "text": "我",
         "iconPath":"./pages/img/me1.png",
         "selectedIconPath":"./pages/img/me2.png"
