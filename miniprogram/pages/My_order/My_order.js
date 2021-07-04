@@ -1,5 +1,7 @@
 
 const db = wx.cloud.database()
+var appData = getApp().globalData;
+
 Page({
 
   /**
@@ -24,7 +26,8 @@ Page({
   onLoad: function (options) {
     let that = this
     db.collection('order').where({
-      product_state:that.data.state
+      product_state:that.data.state,
+      buyer_openid:appData.openid
     }).get({
       success:function(res){
         console.log('订单获取成功',res)

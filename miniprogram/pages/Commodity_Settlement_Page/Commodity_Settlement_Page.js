@@ -1,6 +1,7 @@
 
 const util = require('../../utils/util.js')
 const  db = wx.cloud.database()
+var appData = getApp().globalData;
 Page({
 
   /**
@@ -36,7 +37,8 @@ Page({
               money:that.data.money,
               product:that.data.product,
               time:DATE,
-              product_state:"送货中"
+              product_state:"送货中",
+              buyer_openid:appData.openid
             },success:function(res){
               console.log('下单成功',res)
               wx.cloud.callFunction({
@@ -140,14 +142,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**

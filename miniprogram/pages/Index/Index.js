@@ -1,5 +1,5 @@
 const db = wx.cloud.database()
-
+var appData = getApp().globalData;
 Page({
   data: {
     banner:[],
@@ -58,7 +58,8 @@ Page({
         type: 'getOpenId'
       }
     }).then((resp) => {
-      console.log('openId为——'+resp.result.openid) 
+      console.log('openId为——'+resp.result.openid);
+      appData.openid = resp.result.openid;
    }).catch((e) => {
       this.setData({
         showUploadTip: true
