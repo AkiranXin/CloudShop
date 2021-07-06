@@ -59,6 +59,7 @@ Page({
   buy:function(){
     let that = this
     db.collection('shopping_cart').where({
+      _openid:getApp().globalData.openid,
       product_id: that.data.id
     }).get({
       success:function(res){

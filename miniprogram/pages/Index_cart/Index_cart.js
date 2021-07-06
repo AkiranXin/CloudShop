@@ -160,7 +160,9 @@ Page({
    */
   onShow: function () {
     let that = this
-    db.collection('shopping_cart').get({
+    db.collection('shopping_cart').where({
+      _openid:appData.openid
+    }).get({
       success:function(res){
         console.log('获取购物车商品成功',res)
         that.setData({
