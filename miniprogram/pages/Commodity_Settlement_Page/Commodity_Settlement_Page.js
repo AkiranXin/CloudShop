@@ -124,7 +124,8 @@ Page({
   onLoad: function (options) {
     let that = this
     db.collection('shopping_cart').where({
-      product_checked:"true"
+      product_checked:"true",
+      _openid:appData.openid,
     }).get({
       success:function(res){
         console.log('获取商品成功',res)

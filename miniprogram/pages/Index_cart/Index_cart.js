@@ -17,6 +17,8 @@ Page({
   },
   // 支付事件
   pay:function(e){
+    if(this.data.money!=0)
+    {
     let that = this
     db.collection('shopping_cart').where({
       product_checked:"true"
@@ -37,6 +39,7 @@ Page({
         console.log('获取商品失败',res)
       }
     })
+  }
   },
 
   // 计算金额

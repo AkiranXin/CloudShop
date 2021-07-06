@@ -19,40 +19,43 @@ Page({
 
   // 加入购物车
   into_shopping_cart:function(){
-    let that = this
-    db.collection('shopping_cart').where({
-      product_id: that.data.id
-    }).get({
-      success:function(res){
-        console.log(res)
-        if(res.data == ""){
-          db.collection('shopping_cart').add({
-            data:{
-            product_name:that.data.product_name,
-            product_src:that.data.product_src[0],
-            product_price:that.data.product_price,
-            product_num:1,
-            product_id:that.data.id,
-            // 新增代码
-            product_checked:""    
-            },success:function(res){
-              console.log('商品加入购物车成功',res)
-              wx.showToast({
-                title: '加入成功',
-              })
-            },fail:function(res){
-              console.log('商品加入购物车失败',res)
-            }
-          })
-        }else{
-          wx.showToast({
-            title: '已有这个商品',
-            icon:'none'
-          })
-        }
-      },fail:function(res){
-        console.log(res)
-      }
+    // let that = this
+    // db.collection('shopping_cart').where({
+    //   product_id: that.data.id
+    // }).get({
+    //   success:function(res){
+    //     console.log(res)
+    //     if(res.data == ""){
+    //       db.collection('shopping_cart').add({
+    //         data:{
+    //         product_name:that.data.product_name,
+    //         product_src:that.data.product_src[0],
+    //         product_price:that.data.product_price,
+    //         product_num:1,
+    //         product_id:that.data.id,
+    //         // 新增代码
+    //         product_checked:""    
+    //         },success:function(res){
+    //           console.log('商品加入购物车成功',res)
+    //           wx.showToast({
+    //             title: '加入成功',
+    //           })
+    //         },fail:function(res){
+    //           console.log('商品加入购物车失败',res)
+    //         }
+    //       })
+    //     }else{
+    //       wx.showToast({
+    //         title: '已有这个商品',
+    //         icon:'none'
+    //       })
+    //     }
+    //   },fail:function(res){
+    //     console.log(res)
+    //   }
+    // })
+    wx.switchTab({
+      url: '../Index_cart/Index_cart',
     })
   },
   // 立即购买
