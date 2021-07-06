@@ -24,7 +24,16 @@
     <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/进入.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
   </view>
 </navigator>
-
+<view style="display:flex">
+<navigator url="../My_order/My_order?state=送货中">
+<view class="order-num">{{order.shipping_num}}</view>
+<image class="order-img" src="https://i.loli.net/2021/07/06/6XEwBP3vFN1MzLA.png"></image>
+</navigator>
+<navigator url="../My_order/My_order?state=已送达">
+  <view class="order-num">{{order.finish_num}}</view>
+  <image class="order-img" src="https://i.loli.net/2021/07/06/AyHkv4nfLRZ1Vc7.png"></image>
+</navigator>
+  </view>
 
 
 <!-- 收货地址 -->

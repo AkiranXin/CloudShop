@@ -21,7 +21,6 @@ App({
           type: 'getOpenId'
         }
       }).then((resp) => {
-        console.log('openId为——'+resp.result.openid);
         this.globalData.openid = resp.result.openid;
       });
     }

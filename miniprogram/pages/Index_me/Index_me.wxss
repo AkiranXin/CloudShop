@@ -25,6 +25,27 @@ page{
   padding-left: 20rpx;
 }
 
+.order-img{
+  border: #DD307F solid 5rpx;
+  border-radius: 25rpx;
+  width: 150rpx;
+  height: 150rpx;
+  margin:5rpx 20rpx;
+}
+
+.order-num{
+  position: relative;
+  left:-50rpx;
+  float: right;
+  background-color: #DD307F;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
 .aa{
   display: flex;
   flex-direction: row;

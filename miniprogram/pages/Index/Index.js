@@ -21,7 +21,7 @@ Page({
     db.collection('product')
     .where({
       // name:e.detail.value
-      name:{								
+      name:{					
         //columnName表示欲模糊查询数据所在列的名
         $regex:'.*' + e.detail.value + '.*',		
         //queryContent表示欲查询的内容，‘.*’等同于SQL中的‘%’
@@ -58,7 +58,6 @@ Page({
         type: 'getOpenId'
       }
     }).then((resp) => {
-      console.log('openId为——'+resp.result.openid);
       appData.openid = resp.result.openid;
    }).catch((e) => {
       this.setData({

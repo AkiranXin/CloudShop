@@ -9,6 +9,17 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+const getQueryString = (url, name) => {
+  var reg = new RegExp('(^|&|/?)' + name + '=([^&|/?]*)(&|/?|$)', 'i')
+  var r = url.substr(1).match(reg)
+  if (r != null) {
+      // console.log("r = " + r)
+      // console.log("r[2] = " + r[2])
+      return r[2]
+  }
+  return null;
+}
+
 
 const formatDate = date => {
   const year = date.getFullYear()

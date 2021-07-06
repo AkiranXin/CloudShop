@@ -9,14 +9,16 @@ Page({
    */
   data: {
       order:[],
-      state:"送货中"
+      state:"送货中",
+      state_if_change:false
   },
   // 选择事件
   xuanze:function(e){
     let that = this
     console.log(e)
     that.setData({
-      state:e.currentTarget.dataset.state
+      state:e.currentTarget.dataset.state,
+      state_if_change:true
     })
     that.onLoad()
   },
@@ -24,10 +26,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(!this.data.state_if_change){
+    var pages = getCurrentPages()    //获取加载的页面
+    var currentPage = pages[pages.length-1]    //获取当前页面的对象
+    var url = currentPage.route    //当前页面url
+    var options = currentPage.options    //如果要获取url中所带的参数可以查看options
+    
+    this.setData({
+      state:options.state
+    })
+  }
+
+
     let that = this
     db.collection('order').where({
       product_state:that.data.state,
-      buyer_openid:appData.openid
+      _openid:appData.openid
     }).get({
       success:function(res){
         console.log('订单获取成功',res)
