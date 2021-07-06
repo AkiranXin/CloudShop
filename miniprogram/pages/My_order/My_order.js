@@ -26,18 +26,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //显示加载
+    wx.showLoading({title: '加载中'});
     if(!this.data.state_if_change){
     var pages = getCurrentPages()    //获取加载的页面
     var currentPage = pages[pages.length-1]    //获取当前页面的对象
     var url = currentPage.route    //当前页面url
     var options = currentPage.options    //如果要获取url中所带的参数可以查看options
-    
     this.setData({
       state:options.state
-    })
+    });
   }
 
-
+    //加载数据
     let that = this
     db.collection('order').where({
       product_state:that.data.state,
@@ -51,7 +52,10 @@ Page({
       },fail:function(res){
         console.log('订单获取失败',res)
       }
-    })
+    });
+
+    //关闭加载
+    wx.hideLoading();
   },
 
   /**

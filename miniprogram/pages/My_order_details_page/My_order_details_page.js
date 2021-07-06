@@ -13,6 +13,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //显示加载
+    wx.showLoading({title: '加载中'});
     let that = this
     db.collection('order').doc(options.id).get({
       success:function(res){
@@ -23,7 +25,10 @@ Page({
       },fail:function(res){
         console.log('订单获取失败',res)
       }
-    })
+    });
+
+    //关闭加载
+    wx.hideLoading();
   },
 
   /**

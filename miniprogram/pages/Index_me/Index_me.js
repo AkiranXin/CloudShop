@@ -25,8 +25,10 @@ Page({
           })
         }
       }
-    })
+    });
+  },
 
+  onShow(){
     //获得相关状态订单数量
     let that = this
     db.collection('order').where({
@@ -50,6 +52,7 @@ Page({
       }
     })
   },
+
   bindGetUserInfo (e) {
     console.log(e.detail.userInfo)
   },
