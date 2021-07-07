@@ -1,5 +1,5 @@
 
-<block wx:for="{{product}}" wx:key="_id">
+<block wx:if="{{product.length > 0}}" wx:for="{{product}}" wx:key="_id">
 <!-- 商品信息模块 -->
 <view class="product_list">
   <view class="product_list_1">
@@ -26,6 +26,9 @@
 <view class="line"></view>
 </block>
 
+<view class="empty_tip" wx:if="{{product.length <= 0}}">
+购物车空空如也
+</view>
 
 
 <!-- 按钮模块 -->

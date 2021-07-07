@@ -48,6 +48,24 @@ Page({
     let that = this
     var DATE = util.formatDate(new Date());
     if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""){
+
+      //发送订阅消息
+      wx.requestSubscribeMessage({
+        tmplIds: ['RsgWT2Vu40U4K1ORjYrFVCnDrTJ2BB1-O1BGym2WeJw'],
+        success(res){
+          wx.request({
+            url:'https://api.kinlon.work/focus_assistant/wechat_message/',
+            method:'GET',
+            data:{
+              openid:appData.openid,
+              order_id:appData.openid,
+              amount:that.data.product.length,
+              page:'/Index_me/Index_me'
+            },
+            success(res){
+              console.log(res)
+
+
       db.collection('order').add({
             data:{
               name:that.data.name,
@@ -80,9 +98,6 @@ Page({
                   wx.switchTab({
                     url: '../Index_cart/Index_cart',
                   })
-                  // wx.navigateTo({
-                  //   url: '../pay/pay?id='+that.data.money+"&name="+that.data.name+"&phone_number="+that.data.phone_number+"&address="+that.data.address+"&beizhu="+that.data.beizhu+"&product="+that.data.product
-                  // })
                 },fail:function(res){
                   console.log('购物车删除失败',res)
                 }
@@ -90,13 +105,18 @@ Page({
             },fail:function(res){
               console.log('下单失败',res)
             }
-          })
+          });
+        }
+      })
+    }
+  });
     }else{
       wx.showToast({
         title: '地址信息有误',
         icon:"none"
       })
     }
+    
   },
   close:function()
   {

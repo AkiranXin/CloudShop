@@ -154,3 +154,10 @@ page {
   line-height: 36rpx;
   word-break: break-all;
 }
+
+.empty_tip{
+  color: #7d7b7b;
+  font-size: 50rpx;
+  text-align: center;
+  line-height: 800rpx;
+}

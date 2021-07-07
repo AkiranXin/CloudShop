@@ -39,6 +39,11 @@ Page({
         console.log('获取商品失败',res)
       }
     })
+  }else{
+    wx.showToast({
+      title: '你还未选择商品',
+      icon:"none"
+    })
   }
   },
 
