@@ -13,7 +13,9 @@ Page({
     name:"",
     phone_number:"",
     address:"",
-    beizhu:""
+    beizhu:"",
+    buttonk:true,
+
   },
   // 备注
   beizhu:function(e){
@@ -26,8 +28,8 @@ Page({
   // 结算
   pay:function(e){
      let that = this
-    // var DATE = util.formatDate(new Date());
-    // if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""){
+     var DATE = util.formatDate(new Date());
+     if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""){
     //   db.collection('order').add({
     //         data:{
     //           name:that.data.name,
@@ -82,7 +84,13 @@ Page({
     //     title: '地址信息有误',
     //     icon:"none"
     //   })
-    // }
+     }
+     else{
+         wx.showToast({
+           title: '地址信息有误',
+           icon:"none"
+         })
+         }
     
   },
   // 选择地址
@@ -98,6 +106,7 @@ Page({
                 success (res) {
                   console.log(res)
                   that.setData({
+                    buttonk:false,
                     name:res.userName,
                     phone_number:res.telNumber,
                     address:res.provinceName+res.cityName+res.countyName+res.detailInfo

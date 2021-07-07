@@ -6,7 +6,7 @@
     <view style="font-size:32rpx;color: #A2A3A4;">{{phone_number}}</view>
   </view>
   <view style="font-size:35rpx;color: #A2A3A4;">{{address}}</view>
-  <button bindtap="address" style="width:300rpx" plain="true" type="primary">添加地址</button>
+  <button bindtap="address" wx:if="{{buttonk}}" style="width:300rpx" plain="true" type="primary">添加地址</button>
 </view>
 
 
