@@ -13,17 +13,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title:"数据加载中"
+    })
     let that = this
     wx.cloud.callFunction({
       name:"get_product",
       data:{
         
       },success:function(res){
+        wx.hideLoading()
         console.log('订单详情获取成功',res)
         that.setData({
           product:res.result.data
         })
       },fail:function(res){
+        wx.hideLoading()
         console.log('订单详情获取失败',res)
       }
     })

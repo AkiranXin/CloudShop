@@ -138,10 +138,14 @@ delete_xq: function (e) {
           product_xq_src:that.data.img_xq
         },success:function(res){
           wx.showToast({
-            title: '提交成功',
-          })
-          wx.redirectTo({
-            url: '../Commodity_Upload_Page/Commodity_Upload_Page',
+            title: '上传成功',
+            success:(function(){
+              setTimeout(function(){
+                wx.redirectTo({
+                  url: '../Commodity_Management_Page/Commodity_Management_Page',
+                })
+              }, 2000);
+            })
           })
         }
       })

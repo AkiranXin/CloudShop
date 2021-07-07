@@ -17,24 +17,40 @@ Page({
   },
   delete_product:function(e){
     let that = this
-    db.collection('product').doc(that.data.id).remove({
-      success: function(res) {
-        console.log('删除成功',res.data)
-        wx.cloud.deleteFile({
-          fileList: that.data.img,
-          success: res => {
-            // handle success
-            console.log(res.fileList)
-          },
-          fail: err => {
-            // handle error
-          },
-        })
-        wx.redirectTo({
-          url: '../Commodity_Management_Page/Commodity_Management_Page',
-        })
+    wx.showModal({
+      title: '提示',
+      content: '确定删除',
+      success (res) {
+        if (res.confirm) {
+          db.collection('product').doc(that.data.id).remove({
+            success: function(res) {
+              console.log('删除成功',res.data)
+              wx.cloud.deleteFile({
+                fileList: that.data.img,
+                success: res => {
+                  // handle success
+                  wx.showToast({
+                    title: '删除成功！',
+                    icon:'success',
+                    duration:1000
+                  })
+                  console.log(res.fileList)
+                },
+                fail: err => {
+                  // handle error
+                },
+              })
+              wx.redirectTo({
+                url: '../Commodity_Management_Page/Commodity_Management_Page',
+              })
+            }
+          })
+        }else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
+    
   },
   // 上传图片
   upload_img:function(){
@@ -84,6 +100,7 @@ Page({
       success: res => {
         // handle success
         console.log(res.fileList)
+
       },
       fail: err => {
         // handle error
@@ -147,6 +164,9 @@ delete_xq: function (e) {
   console.log(that.data.img_xq)
 },
   submit:function(e){
+    wx.showLoading({
+      title: '更新中',
+    })
     let that = this
     console.log(e.detail.value)
     if(e.detail.value.name!==""&&e.detail.value.price!==""&&e.detail.value.fenlei!==""&&e.detail.value.detail!==""&&that.data.img.length!==0){
@@ -160,8 +180,9 @@ delete_xq: function (e) {
           num:0,
           product_xq_src:that.data.img_xq
         },success:function(res){
+          wx.hideLoading()
           wx.showToast({
-            title: '提交成功',
+            title: '更新成功',
           })
           wx.redirectTo({
             url: '../Commodity_Update_Page/Commodity_Update_Page',
@@ -182,6 +203,9 @@ delete_xq: function (e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title:"数据加载中"
+    })
     let that = this
     console.log(options)
     that.setData({
@@ -189,6 +213,7 @@ delete_xq: function (e) {
     })
     db.collection('fenlei').get({
       success:function(res){
+        wx.hideLoading()
         console.log('分类获取成功',res)
     // console.log("optionID为"+that.data.id);
         that.setData({
