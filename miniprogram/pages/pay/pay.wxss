@@ -1,0 +1,33 @@
+.titile{
+  font-size: 40px;
+  margin-top:30%;
+  text-align: center;
+}
+.choice{
+  margin-top: 20%;
+  text-align: center;
+}
+.wechatpay{
+  width: 300px;
+  height: 150px;
+}
+.money{
+  font-size: 70px;
+  margin-top: 50px;
+  text-align: center;
+}
+.button{
+  display: flex;
+  width:100%;
+  color:green;
+  position:fixed;
+  bottom:0; 
+}
+.close{
+font-size: 30px;
+background-color: rgb(243, 111, 144);
+}
+.pay{
+  background-color: rgb(139, 247, 139);
+  font-size: 30px;
+}
