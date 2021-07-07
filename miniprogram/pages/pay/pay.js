@@ -97,8 +97,13 @@ Page({
         icon:"none"
       })
     }
-    
   },
+  close:function()
+  {
+    wx.switchTab({
+      url: '../Index_cart/Index_cart',
+    })
+  }
 
   
 })
