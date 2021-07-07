@@ -45,6 +45,7 @@ Page({
     })
   },
   pay:function(e){
+
     let that = this
     var DATE = util.formatDate(new Date());
     if(that.data.name!==""&&that.data.address!==""&&that.data.phone_number!==""){
@@ -53,6 +54,9 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: ['RsgWT2Vu40U4K1ORjYrFVCnDrTJ2BB1-O1BGym2WeJw'],
         success(res){
+          wx.showLoading({
+            title: '执行中',
+          });
           wx.request({
             url:'https://api.kinlon.work/focus_assistant/wechat_message/',
             method:'GET',
@@ -63,6 +67,7 @@ Page({
               page:'/Index_me/Index_me'
             },
             success(res){
+
               console.log(res)
 
 
@@ -106,6 +111,7 @@ Page({
               console.log('下单失败',res)
             }
           });
+          wx.hideLoading();
         }
       })
     }
