@@ -3,12 +3,12 @@
   <form class="login" bindsubmit="formsubmit">
     <view class="login_1">
       <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/me2.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
-      <input name="zhanghu" placeholder="请输入账号"></input>
+      <input value="{{name}}" name="zhanghu" placeholder="请输入账号"></input>
     </view>
     <view class="line"></view>
     <view class="login_1">
       <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/密码.png" style="width:60rpx;height:60rpx;margin-right: 20rpx;"></image>
-      <input name="pwd" placeholder="请输入密码" password="true"></input>
+      <input value="{{pwd}}" name="pwd" placeholder="请输入密码" password="true"></input>
     </view>
     <view class="line"></view>
     <button class="btn" form-type="submit" style="width:165px;line-height:50rpx;margin:60rpx auto;">登陆</button>

@@ -27,7 +27,11 @@ App({
 
     this.globalData = {
       openid:undefined,
-      env:'testdb123-90eht'
+      env:'testdb123-90eht',
+      merchant_account:{
+        name:'',
+        pwd:''
+      }
     }
   }
 })

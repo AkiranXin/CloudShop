@@ -1,12 +1,14 @@
 
-const db = wx.cloud.database()
+const db = wx.cloud.database();
+var appData = getApp().globalData;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    name:'',
+    pwd:''
   },
 
   formsubmit:function(e){
@@ -24,6 +26,10 @@ Page({
                   icon:"none"
                 })
               }else{
+                appData.merchant_account = {
+                  name:e.detail.value.zhanghu,
+                  pwd:e.detail.value.pwd
+                }
                 wx.redirectTo({
                   url: '../Merchant_Management_Page/Merchant_Management_Page',
                 })
@@ -44,7 +50,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      name:appData.merchant_account.name,
+      pwd:appData.merchant_account.pwd
+    })
   },
 
   /**
