@@ -1,4 +1,3 @@
-
 const db = wx.cloud.database()
 
 Page({
@@ -15,30 +14,33 @@ Page({
   upload_img:function(){
     let that = this
     wx.chooseImage({
-      count: 1,
+      count: 9,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success (res) {
-        var timestamp = Date.parse(new Date());
-        timestamp = timestamp / 1000;
-        console.log("当前时间戳为：" + timestamp);
         // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths
-        console.log(tempFilePaths)
-        wx.cloud.uploadFile({
-          cloudPath: 'product/'+timestamp+'.png',
-          filePath: tempFilePaths[0], // 文件路径
-          success: function(res) {
-            // get resource ID
-            console.log("成功"+res.fileID)
-            that.setData({
-              img:that.data.img.concat(res.fileID)
-            })
-          },
-          fail: function(res) {
-            // handle error
-          }
-        })
+        let tempFilePaths = res.tempFilePaths;
+        const promiseArr=[]
+        for(let i=0;i<tempFilePaths.length;i++){
+            let imgtemppPath=res.tempFilePaths[i]
+            console.log(tempFilePaths)
+            var timestamp = Date.parse(new Date());
+            timestamp = timestamp / 1000+i;
+            console.log("当前时间戳为：" + timestamp);
+            promiseArr.push(new Promise((resolve,reject)=>{
+              wx.cloud.uploadFile({
+                cloudPath: 'product/'+timestamp+'.png',
+                filePath: imgtemppPath, // 文件路径
+              }).then(res=>{
+                // get resource ID
+                console.log("成功"+res.fileID)
+                that.setData({
+                  img:that.data.img.concat(res.fileID)
+                })
+                resolve()
+              })
+            }))
+        }
       }
     })
   },
@@ -67,36 +69,46 @@ Page({
     })
     console.log(that.data.img)
   },
-// 商品详情
+// 上传商品详情图片
 upload_img_xq:function(){
   let that = this
-  wx.chooseImage({
-    count: 1,
-    sizeType: ['original', 'compressed'],
-    sourceType: ['album', 'camera'],
-    success (res) {
-      var timestamp = Date.parse(new Date());
-      timestamp = timestamp / 1000;
-      console.log("当前时间戳为：" + timestamp);
-      // tempFilePath可以作为img标签的src属性显示图片
-      const tempFilePaths = res.tempFilePaths
-      console.log(tempFilePaths)
-      wx.cloud.uploadFile({
-        cloudPath: 'product/'+timestamp+'.png',
-        filePath: tempFilePaths[0], // 文件路径
-        success: function(res) {
-          // get resource ID
-          console.log("成功"+res.fileID)
-          that.setData({
-            img_xq:that.data.img_xq.concat(res.fileID)
-          })
-        },
-        fail: function(res) {
-          // handle error
-        }
-      })
-    }
-  })
+  //只能上传一张图片
+  if(that.data.img_xq.length==0){
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success (res) {
+        var timestamp = Date.parse(new Date());
+        timestamp = timestamp / 1000;
+        console.log("当前时间戳为：" + timestamp);
+        // tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths)
+        wx.cloud.uploadFile({
+          cloudPath: 'product/'+timestamp+'.png',
+          filePath: tempFilePaths[0], // 文件路径
+          success: function(res) {
+            // get resource ID
+            console.log("成功"+res.fileID)
+            that.setData({
+              img_xq:that.data.img_xq.concat(res.fileID)
+            })
+          },
+          fail: function(res) {
+            // handle error
+          }
+        })
+      }
+    })
+  }else{
+    wx.showToast({
+      title: '只能上传一张图片哦！',
+      icon:'error',
+      duration:2000
+    })
+  }
+  
 },
 // 删除图片
 // 删除数组中指定下标
@@ -123,7 +135,7 @@ delete_xq: function (e) {
   })
   console.log(that.data.img_xq)
 },
-
+  //上传商品
   submit:function(e){
     let that = this
     console.log(e)
@@ -162,8 +174,10 @@ delete_xq: function (e) {
    */
   onLoad: function (options) {
     let that = this
+    wx.showLoading()
     db.collection('fenlei').get({
       success:function(res){
+        wx.hideLoading()
         console.log('分类获取成功',res)
         that.setData({
           fenlei:res.data

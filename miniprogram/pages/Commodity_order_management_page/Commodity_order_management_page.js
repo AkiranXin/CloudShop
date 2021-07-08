@@ -23,11 +23,15 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+    wx.showLoading({
+      title: '数据加载中',
+    })
     wx.cloud.callFunction({
       name:'get_order',
       data:{
         state:that.data.state
       },success:function(res){
+        wx.hideLoading()
         console.log('订单获取成功',res)
         that.setData({
           order:res.result.data

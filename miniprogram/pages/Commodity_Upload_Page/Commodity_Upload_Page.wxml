@@ -9,7 +9,7 @@
       <view class="line"></view>
       <view class="upload_1">
         <view>商品价格：</view>
-        <input placeholder="请输入商品价格" name="price"></input>
+        <input type="number" placeholder="请输入商品价格" name="price"></input>
       </view>
       <view class="line"></view>
       <view class="chooseCategory">
