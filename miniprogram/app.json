@@ -15,9 +15,8 @@
     "pages/Index_me/Index_me",
     "pages/Commodity_Settlement_Page/Commodity_Settlement_Page",
     "pages/Commodity_category_page/Commodity_category_page",
-    "pages/My_order_details_page/My_order_details_page",
-    "pages/Commodity_order_management_page/Commodity_order_management_page"
-
+    "pages/Commodity_order_management_page/Commodity_order_management_page",
+    "pages/My_order_details_page/My_order_details_page"
   ],
   "window": {
     "backgroundColor": "#DD307F",

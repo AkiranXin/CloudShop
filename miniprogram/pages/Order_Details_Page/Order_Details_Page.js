@@ -65,6 +65,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    });
     let that = this
     that.setData({
       id:options.id
@@ -73,7 +76,8 @@ Page({
       success:function(res){
         that.setData({
           message:res.data
-        })
+        });
+        wx.hideLoading();
       }
     })
     wx.cloud.callFunction({

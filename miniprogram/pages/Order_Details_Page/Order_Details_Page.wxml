@@ -40,4 +40,4 @@
 
 <button bindtap="phone" type="primary" plain="true" style="margin:12px auto;wxcs_style_margin:30rpx auto;">拨打电话</button>
 
-<button bindtap="songda" type="primary" >订单已送达</button>
+<button bindtap="songda" wx:if="{{message.product_state != '已送达'}}" type="primary" >订单已送达</button>

@@ -9,7 +9,7 @@ Page({
   data: {
     fenlei:[],
     product:[],
-    fenlei_now:""
+    fenlei_now:"女装"
   },
   get_product_fenlei:function(e){
     let that = this
@@ -38,8 +38,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this
-    console.log(options)
+    let that = this;
     db.collection('fenlei').get({
       success:function(res){
         console.log('获取分类成功',res)
@@ -51,7 +50,7 @@ Page({
       }
     })
     db.collection('product').where({
-        fenlei:"手机"
+        fenlei:"女装"
     }).get({
       success:function(res){
         console.log('获取分类成功',res)
@@ -61,7 +60,9 @@ Page({
       },fail:function(res){
         console.log('获取分类成功',res)
       }
-    })
+    });
+
+
   },
 
   /**
