@@ -1,8 +1,26 @@
+.block{
+  background-color: #fff;
+  border-radius: 25rpx;
+  width: 100%;
+  text-align: center;
+  margin-top: 100rpx;
+  padding: 50rpx 0;
+}
+.return{
+  color: rgb(23, 202, 157);
+  font-size: 35rpx;
+  position: fixed;
+  top: 25rpx;
+  left: 25rpx;
+}
+
 .titile{
-  font-size: 40px;
-  margin-top:30%;
+  font-size: 40rpx;
+  margin-bottom:100rpx;
   text-align: center;
 }
+
+
 .choice{
   margin-top: 20%;
   text-align: center;
@@ -12,22 +30,19 @@
   height: 150px;
 }
 .money{
-  font-size: 70px;
-  margin-top: 50px;
+  font-size: 150rpx;
   text-align: center;
 }
-.button{
-  display: flex;
-  width:100%;
-  color:green;
-  position:fixed;
-  bottom:0; 
+
+.small_font{
+  font-size: 70rpx;
 }
-.close{
-font-size: 30px;
-background-color: rgb(243, 111, 144);
-}
-.pay{
-  background-color: rgb(139, 247, 139);
-  font-size: 30px;
+
+.btn_item{
+
+  width:300rpx;
+  font-size: 50rpx;
+  font-weight: 150;
+
+  margin-top: 10%;
 }

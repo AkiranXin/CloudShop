@@ -1,13 +1,24 @@
-<view class="titile">
-  <text>确认支付</text>
+<page>
+
+<a class="return" bindtap="close">{{'<返回'}}</a>
+
+<view class="block">
+  <view class="titile">确认支付\n</view>
+<text style="font-size: 70rpx;">￥</text>
+<text class="money">{{money}}</text>
+
+<text style="font-size: 40rpx;">\n西柚严选</text>
+
+
 </view>
-<view class="money">
-<text>￥{{money}}</text>
-</view>
+
+
 <view class="choice">
 <image src="https://img2.baidu.com/it/u=4165933430,976838017&fm=26&fmt=auto&gp=0.jpg" class="wechatpay"></image>
 </view>
-<view class="button">
-<button class="close" bindtap="close">取消</button>
-<button class="pay" bindtap="pay">确认</button>
-</view>
+
+<button type="primary" class="btn_item" bindtap="pay">确认</button>
+
+
+
+</page>
