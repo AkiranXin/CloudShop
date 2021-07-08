@@ -61,13 +61,13 @@ Page({
             url:'https://api.kinlon.work/focus_assistant/wechat_message/',
             method:'GET',
             data:{
-              openid:appData.openid,
-              order_id:appData.openid,
-              amount:that.data.product.length,
-              page:'/Index_me/Index_me'
+              openid:appData.openid,//用户openid
+              order_id:'cbddf0af60dd56a313d97a8d0491c81c',//订单编号
+              amount:that.data.money,//订单金额
+              page:'index',//点击消息跳转界面
+              msg:'送货中'//订单即将状态
             },
             success(res){
-
               console.log(res)
 
 
