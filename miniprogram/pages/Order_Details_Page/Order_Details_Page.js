@@ -7,7 +7,8 @@ Page({
    */
   data: {
     order:{},
-    id:""
+    id:"",
+    message:''
   },
   // 拨打电话
   phone:function(){
@@ -20,22 +21,45 @@ Page({
 
   songda:function(){
     let that= this
-    wx.cloud.callFunction({
-      name:'songda',
-      data:{
-        id:that.data.order._id
-      },success:function(res){
-        console.log('订单状态更新成功',res)
-        wx.showToast({
-          title: '送货成功',
+    console.log(that.data.message)
+    wx.requestSubscribeMessage({
+      tmplIds: ['RsgWT2Vu40U4K1ORjYrFVCnDrTJ2BB1-O1BGym2WeJw'],
+      success(res){
+        wx.showLoading({
+          title: '执行中',
+        });
+        wx.request({
+          url:'https://api.kinlon.work/focus_assistant/wechat_message/',
+          method:'GET',
+          data:{
+            openid:that.data.message.buyer_openid,//用户openid
+            order_id:that.data.message._id,//订单编号
+            amount:that.data.message.money,//订单金额
+            //page:'../Index/Index',//点击消息跳转界面
+            msg:"已送达"//订单即将状态
+          },
+          success(res){
+            wx.cloud.callFunction({
+              name:'songda',
+              data:{
+                id:that.data.order._id
+              },success:function(res){
+                console.log('订单状态更新成功',res)
+                wx.showToast({
+                  title: '送货成功',
+                })
+                wx.redirectTo({
+                  url: '../Commodity_order_management_page/Commodity_order_management_page',
+                })
+              },fail:function(res){
+                console.log('订单状态更新失败',res)
+              }
+            })
+          }
         })
-        wx.redirectTo({
-          url: '../Commodity_order_management_page/Commodity_order_management_page',
-        })
-      },fail:function(res){
-        console.log('订单状态更新失败',res)
       }
     })
+   
   },
   /**
    * 生命周期函数--监听页面加载
@@ -44,6 +68,13 @@ Page({
     let that = this
     that.setData({
       id:options.id
+    })
+    db.collection('order').doc(options.id).get({
+      success:function(res){
+        that.setData({
+          message:res.data
+        })
+      }
     })
     wx.cloud.callFunction({
       name:"get_order_detail",
