@@ -7,10 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fenlei:[],
-    img:[],
-    //商品详情页图片
-    img_xq:[]
+    fenlei:[],//分类列表
+    img:[], //商品图片
+    img_xq:[]//商品详情页图片
   },
   // 上传图片
   upload_img:function(){
@@ -47,6 +46,7 @@ Page({
   // 删除数组中指定下标
   delete: function (e) {
     let that = this
+    console.log(e)
     console.log(that.data.img)
     console.log(e.currentTarget.dataset.id)
     var id = e.currentTarget.dataset.id;
@@ -101,6 +101,7 @@ upload_img_xq:function(){
 // 删除图片
 // 删除数组中指定下标
 delete_xq: function (e) {
+  console.log(e)
   let that = this
   console.log(that.data.img_xq)
   console.log(e.currentTarget.dataset.id)
@@ -111,7 +112,7 @@ delete_xq: function (e) {
     img_xq: img_xq
   })
   wx.cloud.deleteFile({
-    fileList: [e.currentTarget.dataset.product_xq_src],
+    fileList: [e.currentTarget.dataset.src],
     success: res => {
       // handle success
       console.log(res.fileList)
