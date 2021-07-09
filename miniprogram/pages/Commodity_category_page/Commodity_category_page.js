@@ -8,7 +8,10 @@ Page({
     product:[],
     name:"",
     xiaopai:true,
-    jiaPai:true
+    jiaPai:true,
+    xuan:true,
+    xiao:false,
+    jia:false
   },
   // 比较函数
   compare:function (property) {
@@ -33,9 +36,12 @@ Page({
       }
       that.setData({
         product:res,
-        xiaopai:flag
+        xiaopai:flag,
+        xiao:true,
+        xuan:false,
+        jia:false
       })
-    }else{
+    }else if(e.currentTarget.dataset.xuanze=='price'){
       console.log(e)
       var flag=!that.data.jiapai
       var res;
@@ -46,7 +52,16 @@ Page({
       }
       that.setData({
         product:res,
-        jiapai:flag
+        jiapai:flag,
+        xiao:false,
+        xuan:false,
+        jia:true
+      })
+    }else{
+      that.setData({
+        xiao:false,
+        xuan:true,
+        jia:false
       })
     }
     // console.log(e)
