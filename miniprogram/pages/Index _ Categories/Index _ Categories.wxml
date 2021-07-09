@@ -3,8 +3,8 @@
 <!-- 分类栏 -->
   <view class="fenlei_left">
     <block wx:for="{{fenlei}}" wx:key="_id">
-      <view class="fenlei_left_1" bindtap="get_product_fenlei" data-name="{{item.name}}">
-        <image src="{{item.src}}" style="width:50rpx;height:50rpx"></image>
+      <view class="{{index==selected?'fenlei_left_0':'fenlei_left_1'}}" bindtap="get_product_fenlei" data-index="{{index}}" data-name="{{item.name}}">
+        <image src="{{item.src}}" style="display:flex;width:50rpx;height:50rpx"></image>
         <view>{{item.name}}</view>
       </view>
     </block>

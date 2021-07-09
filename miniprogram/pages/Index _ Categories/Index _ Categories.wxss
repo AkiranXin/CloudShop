@@ -39,6 +39,18 @@
   align-self: center;
   justify-content: space-between;
 }
+.fenlei_left_0{
+  display: flex;
+  background-color: rgb(241, 236, 240);
+  flex-direction: row;
+  width: 70%;
+  height: 100rpx;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  border: 1px solid rgb(211, 208, 208);
+  border-radius: 20rpx;
+}
 
 
 /* 商品 */

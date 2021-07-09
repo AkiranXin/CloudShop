@@ -1,7 +1,8 @@
 <!-- 搜索框 -->
 <view class="search" >
-  <input placeholder="请输入要搜索的商品" bindconfirm="search1" confirm-type="done" bindfocus="inputFocus" bindblur="inputBlur"></input>
-  <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/搜索.png" style="width:50rpx;height:50rpx"></image>
+  <input placeholder="请输入要搜索的商品" bindconfirm="search1" confirm-type="done" bindfocus="inputFocus" bindblur="inputBlur" bindinput="input_value" value="{{inputVal}}"></input>
+  <image wx:if="{{inputVal != ''}}" src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/cancle.png" style="margin-left:70rpx;width:40rpx;height:40rpx;" bindtap="cancle"></image>
+  <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/搜索.png" style="width:50rpx;height:50rpx"  bindtap="search1" data-search="{{inputVal}}"></image>
 </view>
 
 

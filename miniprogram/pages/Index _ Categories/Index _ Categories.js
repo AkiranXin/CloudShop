@@ -9,12 +9,14 @@ Page({
   data: {
     fenlei:[],
     product:[],
-    fenlei_now:"女装"
+    fenlei_now:"女装",
+    selected:0
   },
   get_product_fenlei:function(e){
     let that = this
     that.setData({
-      fenlei_now:e.currentTarget.dataset.name
+      fenlei_now:e.currentTarget.dataset.name,
+      selected:e.currentTarget.dataset.index
     })
     that.get_product()
   },
