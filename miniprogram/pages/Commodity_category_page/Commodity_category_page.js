@@ -7,6 +7,8 @@ Page({
   data: {
     product:[],
     name:"",
+    xiaopai:true,
+    jiaPai:true
   },
   // 比较函数
   compare:function (property) {
@@ -20,11 +22,40 @@ Page({
   // 点击事件
   xuanze:function(e){
     let that = this
-    console.log(e)
-    var res = that.data.product.sort(that.compare(e.currentTarget.dataset.xuanze));
+    if(e.currentTarget.dataset.xuanze=='num'){
+      console.log(e)
+      var flag=!that.data.xiaopai
+      var res;
+      if(flag){
+        res = that.data.product.sort(that.compare('num'));
+      }else{
+        res=that.data.product.sort(that.compare('num')).reverse();
+      }
       that.setData({
-        product:res
+        product:res,
+        xiaopai:flag
       })
+    }else{
+      console.log(e)
+      var flag=!that.data.jiapai
+      var res;
+      if(flag){
+        res = that.data.product.sort(that.compare('price'));
+      }else{
+        res=that.data.product.sort(that.compare('price')).reverse();
+      }
+      that.setData({
+        product:res,
+        jiapai:flag
+      })
+    }
+    // console.log(e)
+    // var res = that.data.product.sort(that.compare(e.currentTarget.dataset.xuanze));
+    // var flag=!that.data.xiaopai
+    //   that.setData({
+    //     product:res,
+    //     xiaopai:flag
+    //   })
   },
   /**
    * 生命周期函数--监听页面加载

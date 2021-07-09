@@ -1,8 +1,14 @@
 <!-- 筛选条件 -->
 <view class="xuanze">
   <view class="xuanze_1" bindtap="xuanze" data-xuanze="" >全部</view>
-  <view class="xuanze_1" bindtap="xuanze" data-xuanze="num" >销量</view>
-  <view class="xuanze_1" bindtap="xuanze" data-xuanze="price" >价格</view>
+  <view class="xuanze_1" bindtap="xuanze" data-xuanze="num" >
+    <text>销量</text> 
+     <image src="{{xiaopai? 'cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/jiangxu.png':'cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/shengxu.png'}}"></image>
+  </view>
+  <view class="xuanze_1" bindtap="xuanze" data-xuanze="price" >
+    <text>价格</text>
+    <image src="{{jiapai?'cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/jiangxu.png':'cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/shengxu.png'}}"></image>
+  </view>
 </view>
 
 
