@@ -111,20 +111,26 @@ Page({
                   wx.showToast({
                     title: '注册成功',
                     icon:"none"
-                  })
+                  });
+                  appData.merchant_account = {
+                    name:that.data.name,
+                    pwd:that.data.pwd,
+                    is_admin:true
+                  }
                   that._register();
                 }
               })
           }
           //已存在的老用户
-          wx.showToast({
-            title: '您的账户已存在',
-            icon:"none"
-          })
+          else{
+            wx.showToast({
+              title: '您的账户已存在',
+              icon:"none"
+            })
+          }
         }
       })
   }else{
-    console.log(that.data.name,that.data.pwd,that.data.re_pwd)
     wx.showToast({
       title: '信息填写有误',
       icon:"none"
