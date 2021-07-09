@@ -30,8 +30,9 @@ App({
       env:'testdb123-90eht',
       merchant_account:{
         name:'',
-        pwd:''
-      }
+        pwd:'',
+        is_admin:undefined
+      },
     }
   }
 })

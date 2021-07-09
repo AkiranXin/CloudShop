@@ -40,3 +40,8 @@
     color: #DD307F;
     border-radius: 20rpx;
 }
+
+.register_tip{
+  text-align: right;
+  margin-left: 76%;
+}
