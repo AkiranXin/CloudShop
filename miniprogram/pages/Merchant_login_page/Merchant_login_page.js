@@ -51,7 +51,7 @@ Page({
         appData.merchant_account = {
           name:that.data.name,
           pwd:that.data.pwd,
-          is_admin:false
+          is_admin:true
         }
       }
 
