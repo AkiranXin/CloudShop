@@ -197,4 +197,20 @@ Page({
     inputVal:e.detail.value
   })
 },
+toSwiperPage:function(options){
+  var page=options.currentTarget.dataset.page;
+  if(page=="0"){
+    wx.navigateTo({
+      url: '../swiperOne/swiperOne',
+    })
+  }else if(page=="1"){
+    wx.navigateTo({
+      url: '../swiperTwo/swiperTwo',
+    })
+  }else{
+    wx.navigateTo({
+      url: '../swiperThree/swiperThree',
+    })
+  }
+}
 })

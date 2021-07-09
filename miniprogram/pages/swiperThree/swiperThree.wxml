@@ -1,0 +1,6 @@
+<view class="containerOne">
+  <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/03.jpg"></image>
+</view>
+<view class="containerTwo">
+  <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/05.jpeg"></image>
+</view>

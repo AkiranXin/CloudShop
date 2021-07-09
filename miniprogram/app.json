@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/Index/Index",
+    "pages/swiperOne/swiperOne",
+    "pages/swiperTwo/swiperTwo",
+    "pages/swiperThree/swiperThree",
     "pages/pay/pay",
     "pages/Merchant_Management_Page/Merchant_Management_Page",
     "pages/Commodity_Management_Page/Commodity_Management_Page",
