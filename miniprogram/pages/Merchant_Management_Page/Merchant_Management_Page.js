@@ -1,11 +1,10 @@
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    is_admin:'',//是否是管理员
   },
   // 跳转页面
   operation:function(e){
@@ -32,7 +31,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

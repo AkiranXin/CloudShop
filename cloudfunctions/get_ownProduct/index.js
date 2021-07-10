@@ -1,13 +1,17 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
+
 cloud.init({
   env:"testdb123-90eht"
 })
 
 const db = cloud.database()
-//获取用户的openid
+
+// 云函数入口函数
 exports.main = async (event, context) => {
-  return await db.collection('order').where({
-    product_state: event.state,
+  const wxContext = cloud.getWXContext()
+ 
+  return  db.collection('product').where({
+    _openid:wxContext.OPENID
   }).get()
 }

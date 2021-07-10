@@ -8,7 +8,6 @@ Page({
   data: {
     order:{},
     id:"",
-    message:''
   },
   // 拨打电话
   phone:function(){
@@ -32,9 +31,9 @@ Page({
           url:'https://api.kinlon.work/focus_assistant/wechat_message/',
           method:'GET',
           data:{
-            openid:that.data.message.buyer_openid,//用户openid
-            order_id:that.data.message._id,//订单编号
-            amount:that.data.message.money,//订单金额
+            openid:that.data.order._openid,//用户openid
+            order_id:that.data.order._id,//订单编号
+            amount:that.data.order.money,//订单金额
             //page:'../Index/Index',//点击消息跳转界面
             msg:"已送达"//订单即将状态
           },
@@ -72,19 +71,12 @@ Page({
     that.setData({
       id:options.id
     })
-    db.collection('order').doc(options.id).get({
-      success:function(res){
-        that.setData({
-          message:res.data
-        });
-        wx.hideLoading();
-      }
-    })
     wx.cloud.callFunction({
       name:"get_order_detail",
       data:{
         id:options.id
       },success:function(res){
+        wx.hideLoading()
         console.log('订单详情获取成功',res)
         that.setData({
           order:res.result.data

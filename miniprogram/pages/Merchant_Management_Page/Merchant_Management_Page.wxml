@@ -5,13 +5,13 @@
     <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/进入.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
   </view>
  
-  <view bindtap="operation" data-page="../Commodity_order_management_page/Commodity_order_management_page">
+  <view bindtap="operation" data-is_admin="{{is_admin}}" data-page="../Commodity_order_management_page/Commodity_order_management_page">
     <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/订单管理.png" style="width:100rpx;height:100rpx"></image>
     <view class="title">管理订单</view>
     <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/进入.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>
   </view>
  
-  <view bindtap="operation" data-page="../Commodity_Management_Page/Commodity_Management_Page">
+  <view bindtap="operation" data-is_admin="{{is_admin}}" data-page="../Commodity_Management_Page/Commodity_Management_Page">
     <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/商品管理.png" style="width:100rpx;height:100rpx"></image>
     <view class="title">管理商品</view>
     <image src="cloud://testdb123-90eht.7465-testdb123-90eht-1302635522/set/进入.png" style="width:60rpx;height:60rpx;margin-left: 400rpx;"></image>

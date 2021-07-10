@@ -1,5 +1,6 @@
+var appData = getApp().globalData;
+const db = wx.cloud.database();
 
-const db = wx.cloud.database()
 Page({
 
   /**
@@ -12,7 +13,6 @@ Page({
   // 选择事件
   xuanze:function(e){
     let that = this
-    console.log(e)
     that.setData({
       state:e.currentTarget.dataset.state
     })
@@ -22,25 +22,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var is_admin = appData.merchant_account.is_admin;
     let that = this
     wx.showLoading({
       title: '数据加载中',
     })
-    wx.cloud.callFunction({
-      name:'get_order',
-      data:{
-        state:that.data.state
-      },success:function(res){
-        wx.hideLoading()
-        console.log('订单获取成功',res)
-        that.setData({
-          order:res.result.data
-        })
-      },fail:function(res){
-        console.log('订单获取失败',res)
-      }
-    })
-    
+    if(is_admin==true){
+      wx.cloud.callFunction({
+        name:'get_order',
+        data:{
+          state:that.data.state
+        },success:function(res){
+          wx.hideLoading()
+          console.log('订单获取成功',res)
+          that.setData({
+            order:res.result.data
+          })
+        },fail:function(res){
+          console.log('订单获取失败',res)
+        }
+      })
+    }else if(is_admin==false){
+      wx.cloud.callFunction({
+        name:'get_ownOrder',
+        data:{
+          state:that.data.state
+        },success:function(res){
+          wx.hideLoading()
+          console.log('订单获取成功',res)
+          that.setData({
+            order:res.result.data
+          })
+        },fail:function(res){
+          console.log('订单获取失败',res)
+        }
+      })
+    }
   },
 
   /**
