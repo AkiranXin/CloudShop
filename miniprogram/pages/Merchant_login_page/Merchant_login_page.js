@@ -52,7 +52,10 @@ Page({
           name:that.data.name,
           pwd:that.data.pwd,
           is_admin:true
-        }
+        };
+        wx.redirectTo({
+          url: '../Merchant_Management_Page/Merchant_Management_Page',
+        })
       }
 
       //非管理员

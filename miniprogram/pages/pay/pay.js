@@ -2,6 +2,7 @@
 const util = require('../../utils/util.js')
 const  db = wx.cloud.database()
 var appData = getApp().globalData;
+var product_contain_merchant = [];
 Page({
 
   /**
@@ -13,8 +14,9 @@ Page({
     name:"",
     phone_number:"",
     address:"",
-    beizhu:""
+    beizhu:"",
   },
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -30,7 +32,7 @@ Page({
         that.setData({
           product:res.data
         })
-        that.get_money_sum()
+        that.get_money_sum();
       },fail:function(res){
         console.log('获取商品失败',res)
       }
@@ -42,8 +44,42 @@ Page({
       beizhu:options.beizhu,
       name:options.name,
       phone_number:options.phone_number
-    })
+    });
   },
+
+  add_into_merchant(){
+    var that = this;
+    //遍历商品存在的商店
+    for(var i=0;i<that.data.product.length;i++){
+      var product_item = that.data.product[i];
+      db.collection('product').where({
+        _id:product_item.product_id
+      }).get({
+        success(res){
+            var merchant = res.data[0]._openid;
+            //如果没有此商户 加入商户列表
+            var isExist = false;
+            for(var j=0;j<product_contain_merchant.length;j++){
+              var temp = product_contain_merchant[j];
+                if(temp.merchant_id === merchant){
+                  isExist = true;
+                  temp.product.push(product_item);
+                  product_contain_merchant[j] = temp;
+                }
+            }
+            if(!isExist){
+              var temp = {
+                merchant_id:merchant,
+                product:[product_item]
+              };
+              product_contain_merchant.push(temp);
+              console.log(product_contain_merchant)
+            }
+        }
+      })
+    }
+  },
+
   pay:function(e){
 
     let that = this
@@ -54,6 +90,7 @@ Page({
       wx.requestSubscribeMessage({
         tmplIds: ['RsgWT2Vu40U4K1ORjYrFVCnDrTJ2BB1-O1BGym2WeJw'],
         success(res){
+          that.add_into_merchant();
           wx.showLoading({
             title: '执行中',
           });
@@ -68,50 +105,17 @@ Page({
               msg:'送货中'//订单即将状态
             },
             success(res){
-              console.log(res)
-
-
-      db.collection('order').add({
-            data:{
-              name:that.data.name,
-              phone_number:that.data.phone_number,
-              address:that.data.address,
-              beizhu:that.data.beizhu,
-              money:that.data.money,
-              product:that.data.product,
-              time:DATE,
-              product_state:"送货中",
-              buyer_openid:appData.openid
-            },success:function(res){
-              console.log('下单成功',res)
-              wx.cloud.callFunction({
-                name:"product_delet",
-                data:{
-                },
-                success:function(res){
-                  console.log('购物车删除成功',res)
-                  for(var i= 0;i<that.data.product.length;i++){
-                    wx.cloud.callFunction({
-                      name:"inc_product_num",
-                      data:{
-                        product_id:that.data.product[i].product_id
-                      },success:function(res){
-                        console.log('商品销量自加成功',res)
-                      }
-                    })
-                  }
-                  wx.switchTab({
-                    url: '../Index_cart/Index_cart',
-                  })
-                },fail:function(res){
-                  console.log('购物车删除失败',res)
+                for(var i=0;i<product_contain_merchant.length;i++){
+                  var item = product_contain_merchant[i];
+                  that.add_product(item.merchant_id,item.product);
                 }
-              })
-            },fail:function(res){
-              console.log('下单失败',res)
-            }
-          });
-          wx.hideLoading();
+          wx.hideLoading({
+            success: (res) => {
+              wx.switchTab({
+                url: '../Index_cart/Index_cart',
+                 });
+            },
+          })
         }
       })
     }
@@ -124,6 +128,49 @@ Page({
     }
     
   },
+
+  add_product(m_id,current_products){
+    var that = this;
+    db.collection('order').add({
+      data:{
+        name:that.data.name,
+        phone_number:that.data.phone_number,
+        address:that.data.address,
+        beizhu:that.data.beizhu,
+        money:that.data.money,
+        product:current_products,
+        time:util.formatDate(new Date()),
+        product_state:"送货中",
+        merchant_openid:m_id//商户id
+      },success:function(res){
+        console.log('下单成功',res)
+        wx.cloud.callFunction({
+          name:"product_delet",
+          data:{
+          },
+          success:function(res){
+            console.log('购物车删除成功',res)
+            for(var i= 0;i<current_products.length;i++){
+              wx.cloud.callFunction({
+                name:"inc_product_num",
+                data:{
+                  product_id:current_products[i].product_id
+                },success:function(res){
+                  console.log('商品销量自加成功',res)
+                }
+              })
+            }
+          },fail:function(res){
+            console.log('购物车删除失败',res)
+          }
+        })
+      },fail:function(res){
+        console.log('下单失败',res)
+      }
+    });
+  },
+
+
   close:function()
   {
     wx.switchTab({

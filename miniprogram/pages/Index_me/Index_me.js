@@ -36,6 +36,7 @@ Page({
       _openid:appData.openid
     }).get({
       success:function(res){
+        console.log(res)
         that.setData({
           'order.shipping_num':res.data.length,
         })
