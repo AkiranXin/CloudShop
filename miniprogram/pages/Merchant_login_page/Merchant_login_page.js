@@ -61,6 +61,7 @@ Page({
       //非管理员
       else{
       db.collection('user').where({
+            _openid:appData.openid,
             zhanghu:that.data.name,
             pwd:that.data.pwd
           }).get({
@@ -96,7 +97,14 @@ Page({
 
   //注册
   else{
-    if(that.data.name!==""&&that.data.pwd!==""&&that.data.re_pwd===that.data.pwd){
+    if(that.data.name==="admin"){
+      wx.showToast({
+        title: '不可使用此账户信息进行注册',
+        icon:"none"
+      })
+    }
+
+    else if(that.data.name!==""&&that.data.pwd!==""&&that.data.re_pwd===that.data.pwd){
       //查看数据库是否存在
       db.collection('user').where({
         _openid:appData.openid,
