@@ -20,6 +20,22 @@ const getQueryString = (url, name) => {
   return null;
 }
 
+const sort_order_by_time = orders =>{
+  for(var i=0;i<orders.length;i++)
+  {
+      for (var j=0; j<orders.length-1-i; ++j){
+        var a = new Date(orders[j].time).getTime();
+        var b = new Date(orders[j+1].time).getTime();
+          if (a < b)
+          {
+              var buf = orders[j];
+              orders[j] = orders[j+1];
+              orders[j+1] = buf;
+          }
+      }
+  }
+  return orders;
+}
 
 const formatDate = date => {
   const year = date.getFullYear()
@@ -37,5 +53,6 @@ const formatNumber = n => {
 
 module.exports = {
   formatTime: formatTime,
-  formatDate:formatDate
+  formatDate:formatDate,
+  sort_order_by_time:sort_order_by_time
 }

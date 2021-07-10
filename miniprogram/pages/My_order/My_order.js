@@ -1,7 +1,7 @@
 
 const db = wx.cloud.database()
 var appData = getApp().globalData;
-
+var util = require('../../utils/util');
 Page({
 
   /**
@@ -47,7 +47,7 @@ Page({
       success:function(res){
         console.log('订单获取成功',res)
         that.setData({
-          order:res.data
+          order:util.sort_order_by_time(res.data)
         })
       },fail:function(res){
         console.log('订单获取失败',res)
