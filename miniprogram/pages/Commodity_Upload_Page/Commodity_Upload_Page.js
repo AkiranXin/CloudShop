@@ -140,26 +140,51 @@ delete_xq: function (e) {
     let that = this
     console.log(e)
     if(e.detail.value.name!==""&&e.detail.value.price!==""&&e.detail.value.fenlei!==""&&e.detail.value.detail!==""&&that.data.img.length!==0){
-      db.collection('product').add({
+      // if(e.detail.value.name!==""&&e.detail.value.detail!==""){
+      wx.showLoading({title:'上传中'});
+      //审核文本
+      wx.request({
+        url: 'https://api.kinlon.work/focus_assistant/check_msg/',
+        method:'GET',
         data:{
-          name:e.detail.value.name,
-          price:e.detail.value.price,
-          fenlei:e.detail.value.fenlei,
-          detail:e.detail.value.detail,
-          src:that.data.img,
-          num:0,
-          product_xq_src:that.data.img_xq
-        },success:function(res){
-          wx.showToast({
-            title: '上传成功',
-            success:(function(){
-              setTimeout(function(){
-                wx.redirectTo({
-                  url: '../Commodity_Management_Page/Commodity_Management_Page',
+          text:e.detail.value.name+'，'+e.detail.value.detail+'。'
+        },
+        success(res){
+          if(res.conclusion === '合规'){
+            db.collection('product').add({
+              data:{
+                name:e.detail.value.name,
+                price:e.detail.value.price,
+                fenlei:e.detail.value.fenlei,
+                detail:e.detail.value.detail,
+                src:that.data.img,
+                num:0,
+                product_xq_src:that.data.img_xq
+              },success:function(res){
+                wx.showToast({
+                  title: '上传成功',
+                  success:(function(){
+                    wx.hideLoading({
+                      success: (res) => {},
+                    });
+                    setTimeout(function(){
+                      wx.redirectTo({
+                        url: '../Commodity_Management_Page/Commodity_Management_Page',
+                      })
+                    }, 2000);
+                  })
                 })
-              }, 2000);
+              }
             })
-          })
+          }else{
+            wx.showToast({
+              title: '文本信息违规！',
+              icon:'error'
+            })
+            wx.hideLoading({
+              success: (res) => {},
+            })
+          }
         }
       })
     }else{
