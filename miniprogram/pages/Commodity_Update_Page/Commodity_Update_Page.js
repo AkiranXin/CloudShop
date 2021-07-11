@@ -14,7 +14,7 @@ Page({
     detail:"",
     id:"",
     img_xq:[],
-    check_fenlei:''
+    check_fenlei:'',
   },
   //删除商品
   delete_product:function(e){
@@ -26,6 +26,9 @@ Page({
         if (res.confirm) {
           wx.cloud.callFunction({
             name:'delete_product',
+            data:{
+              id:that.data.id
+            },
             success:function(res){
               wx.cloud.deleteFile({
                 fileList: that.data.img,
@@ -37,13 +40,13 @@ Page({
                     duration:1000
                   })
                   console.log(res.fileList)
+                  wx.redirectTo({
+                    url: '../Commodity_Management_Page/Commodity_Management_Page',
+                  })
                 },
                 fail: err => {
                   // handle error
                 },
-              })
-              wx.redirectTo({
-                url: '../Commodity_Management_Page/Commodity_Management_Page',
               })
             },fail:function(res){
               console.log("删除失败"+res);
