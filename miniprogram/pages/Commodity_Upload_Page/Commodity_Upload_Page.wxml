@@ -50,5 +50,5 @@
       </view>
 </scroll-view>
   </view>
-  <button form-type="submit" type="primary" style="background-color:#DD307F;margin-top:20rpx;margin-bottom: 50rpx;">提交</button>
+  <button form-type="submit" type="primary" style="background-color:#DD307F;margin-top:15rpx;margin-bottom: 50rpx;">提交</button>
 </form>
