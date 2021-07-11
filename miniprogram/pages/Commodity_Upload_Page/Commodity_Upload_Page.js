@@ -150,7 +150,8 @@ delete_xq: function (e) {
           text:e.detail.value.name+'，'+e.detail.value.detail+'。'
         },
         success(res){
-          if(res.conclusion === '合规'){
+          console.log(res.data.conclusion)
+          if(res.data.conclusion == '合规'){
             db.collection('product').add({
               data:{
                 name:e.detail.value.name,
