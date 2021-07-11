@@ -29,12 +29,12 @@ Page({
     .where({
       // name:e.detail.value
       name:{					
-        //columnName表示欲模糊查询数据所在列的名
-        // $regex:'.*' + e.detail.value + '.*',		
+        //表示欲模糊查询数据所在列的名
         $regex:'.*' + serachInput + '.*',		
+        //.表示除\n之外的任意字符   *表示匹配0-无穷
         //queryContent表示欲查询的内容，‘.*’等同于SQL中的‘%’
         $options: 'i'							
-        //$options:'1' 代表这个like的条件不区分大小写,详见开发文档
+        //$options:'1' 代表这个like的条件不区分大小写
       }
     })
     .get({

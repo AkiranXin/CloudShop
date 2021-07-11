@@ -92,6 +92,6 @@
 </scroll-view>
 </view>
 <button form-type="submit" type="primary" style="background-color:#DD307F;margin:8px auto;wxcs_style_margin:20rpx auto;">更新</button>
-  <button bindtap="delete_product" type="primary" style="background-color:#DD307F;margin-bottom:20rpx;">删除</button>
+  <button bindtap="delete_product" type="primary" style="background-color:#DD307F;margin-bottom:50rpx;">删除</button>
 </form>
 
