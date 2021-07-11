@@ -1,4 +1,7 @@
-/* pages/product_fenlei/product_fenlei.wxss */
+
+Page{
+  overflow-x:hidden;
+}
 .line{
   width: 5rpx;
   height: 100vh;

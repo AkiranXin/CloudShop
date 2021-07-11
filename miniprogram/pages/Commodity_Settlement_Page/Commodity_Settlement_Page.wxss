@@ -1,5 +1,6 @@
 page{
   background-color: rgb(228, 226, 226);
+    overflow-x:hidden;
 }
 .product_list{
   display: flex;

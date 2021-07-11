@@ -1,6 +1,7 @@
 /* pages/store_operation_up/store_operation_up.wxss */
 page{
   background-color: rgb(219, 218, 218);
+    overflow-x:hidden;
 }
 .up{
   display: flex;

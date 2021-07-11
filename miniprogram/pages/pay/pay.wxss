@@ -1,3 +1,7 @@
+page{
+
+  overflow-x:hidden;
+}
 .block{
   background-color: #fff;
   border-radius: 25rpx;

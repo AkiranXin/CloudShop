@@ -1,6 +1,7 @@
-/* pages/my_record/my_record.wxss */
+
 page{
   background-color: rgb(233, 230, 230);
+  overflow-x:hidden;
 }
 
 .xuanze{

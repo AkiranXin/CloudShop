@@ -1,4 +1,7 @@
 /* 轮播图 */
+Page{
+  overflow-x:hidden;
+}
 .banner{
   display: flex;
   flex-direction: row;

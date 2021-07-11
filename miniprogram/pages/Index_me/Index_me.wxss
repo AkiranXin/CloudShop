@@ -1,8 +1,9 @@
-/* pages/my/my.wxss */
+
 page{
   height: 100%;
   width: 100%;
   background-color: white;
+  overflow-x:hidden;
 }
 .cc{
   width: 120rpx;

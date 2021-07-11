@@ -1,4 +1,7 @@
-/* pages/store_operation/store_operation.wxss */
+page{
+
+  overflow-x:hidden;
+}
 .operation{
   display: flex;
   flex-wrap: wrap;

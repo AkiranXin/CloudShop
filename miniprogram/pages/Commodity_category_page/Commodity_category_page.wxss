@@ -1,4 +1,7 @@
 /* 商品 */
+Page{
+  overflow-x:hidden;
+}
 .product{
   width: 100%;
   display: flex;

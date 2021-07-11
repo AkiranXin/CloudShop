@@ -1,5 +1,6 @@
 Page{
   background-color: #fff;
+  overflow-x:hidden;
 }
 
 /* 搜索框 */
